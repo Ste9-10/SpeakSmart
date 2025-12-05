@@ -1,0 +1,13 @@
+{
+  "name": "speaksmart-site",
+  "version": "1.0.0",
+  "description": "Landing page corsi colloquio con salvataggio iscrizioni su PostgreSQL.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "pg": "^8.11.5"
+  }
+}

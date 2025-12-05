@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Area studenti – SpeakSmart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="logo">
+      Speak<span>Smart</span> · Area studenti
+    </div>
+    <div class="header-cta">
+      <a href="/" class="btn btn-outline">Home</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="section-title">Benvenuto nell’area studenti</h2>
+      <p class="section-subtitle" id="stud-welcome">
+        Caricamento dati studente…
+      </p>
+    </section>
+
+    <!-- FILTRO LEZIONI -->
+    <section>
+      <h2 class="section-title">Lezioni disponibili</h2>
+      <p class="section-subtitle">
+        Il filtro è già impostato sulle categorie che hai selezionato in fase di iscrizione.
+      </p>
+
+      <div class="filter-bar">
+        <span>Filtra per categoria:</span>
+        <div id="student-filter" class="filter-tags"></div>
+      </div>
+
+      <div class="percorso-grid">
+        <div class="percorso-card" data-category="nessuna-conoscenza">
+          <h3>Nessuna conoscenza pregressa</h3>
+          <p>Parti da zero con i colloqui: presentazione, domande base, linguaggio.</p>
+          <div class="lesson-list" data-category="nessuna-conoscenza"></div>
+        </div>
+
+        <div class="percorso-card" data-category="problemi-ansia">
+          <h3>Problemi di ansia</h3>
+          <p>Gestione di ansia, tremori, blocchi e pensieri negativi prima del colloquio.</p>
+          <div class="lesson-list" data-category="problemi-ansia"></div>
+        </div>
+
+        <div class="percorso-card" data-category="conoscenza-di-se">
+          <h3>Conoscenza di sé</h3>
+          <ul>
+            <li>Chi sono e cosa offro</li>
+            <li>Percorso scolastico e personale</li>
+            <li>Punti di forza e debolezza</li>
+            <li>Motivazioni e obiettivi professionali</li>
+            <li>Autostima e fiducia</li>
+          </ul>
+          <div class="lesson-list" data-category="conoscenza-di-se"></div>
+        </div>
+
+        <div class="percorso-card" data-category="comunicazione-linguaggio">
+          <h3>Comunicazione e linguaggio</h3>
+          <ul>
+            <li>Comunicazione verbale e non verbale</li>
+            <li>Tono di voce, ritmo, postura</li>
+            <li>Esempi concreti e storytelling</li>
+            <li>Gestione delle emozioni</li>
+          </ul>
+          <div class="lesson-list" data-category="comunicazione-linguaggio"></div>
+        </div>
+
+        <div class="percorso-card" data-category="strategie-colloquio">
+          <h3>Strategie di colloquio</h3>
+          <ul>
+            <li>Domande più comuni</li>
+            <li>Domande difficili / imbarazzanti</li>
+            <li>Domande comportamentali</li>
+            <li>Errori da evitare</li>
+            <li>Domande al recruiter</li>
+          </ul>
+          <div class="lesson-list" data-category="strategie-colloquio"></div>
+        </div>
+
+        <div class="percorso-card" data-category="presentazione-professionale">
+          <h3>Presentazione professionale</h3>
+          <ul>
+            <li>Pitch personale (30 secondi su di te)</li>
+            <li>Abbigliamento e linguaggio del corpo</li>
+            <li>Uso del CV e della lettera</li>
+            <li>Immagine e coerenza personale</li>
+            <li>Chiusura del colloquio</li>
+          </ul>
+          <div class="lesson-list" data-category="presentazione-professionale"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RICHIESTE AI DOCENTI -->
+    <section>
+      <h2 class="section-title">Invia una richiesta ai docenti</h2>
+      <p class="section-subtitle">
+        Puoi chiedere chiarimenti o nuovi materiali su una categoria specifica.
+      </p>
+
+      <form id="request-form" class="lesson-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="req-nome">Nome (facoltativo)</label>
+            <input type="text" id="req-nome" name="nome">
+          </div>
+          <div class="form-field">
+            <label for="req-email">E-mail (facoltativa)</label>
+            <input type="email" id="req-email" name="email">
+          </div>
+          <div class="form-field form-row-full">
+            <label for="req-categoria">Categoria *</label>
+            <select id="req-categoria" name="categoria" required></select>
+          </div>
+          <div class="form-field form-row-full">
+            <label for="req-messaggio">Messaggio / richiesta *</label>
+            <textarea id="req-messaggio" name="messaggio"></textarea>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary">Invia richiesta</button>
+          <p id="request-message" class="form-message" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 SpeakSmart – Area studenti.
+  </footer>
+</div>
+
+<script src="studenti.js"></script>
+</body>
+</html>
