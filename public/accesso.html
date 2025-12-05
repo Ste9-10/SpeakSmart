@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Accesso piattaforma – SpeakSmart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="logo">
+      Speak<span>Smart</span> · Accesso piattaforma
+    </div>
+    <div class="header-cta">
+      <a href="/" class="btn btn-outline">Torna alla home</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="section-title">Iscriviti alla piattaforma</h2>
+      <p class="section-subtitle">
+        Scegli se entrare come studente o come docente. I dati vengono salvati nel database
+        e verrai reindirizzato all’area corrispondente.
+      </p>
+    </section>
+
+    <!-- STUDENTE -->
+    <section>
+      <h2 class="section-title">Iscrizione studenti</h2>
+      <p class="section-subtitle">
+        Scegli le categorie su cui vuoi lavorare: useremo le tue scelte per filtrare lezioni e richieste.
+      </p>
+
+      <form id="student-register-form" class="lesson-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="stud-nome">Nome</label>
+            <input type="text" id="stud-nome" name="nome" placeholder="Es. Mario">
+          </div>
+          <div class="form-field">
+            <label for="stud-email">E-mail *</label>
+            <input type="email" id="stud-email" name="email" required placeholder="nome@example.com">
+          </div>
+
+          <div class="form-field form-row-full">
+            <label>Categorie di interesse *</label>
+            <div class="category-checkboxes">
+              <label><input type="checkbox" name="categorie" value="nessuna-conoscenza"> Nessuna conoscenza pregressa</label>
+              <label><input type="checkbox" name="categorie" value="problemi-ansia"> Problemi di ansia</label>
+              <label><input type="checkbox" name="categorie" value="conoscenza-di-se"> Conoscenza di sé</label>
+              <label><input type="checkbox" name="categorie" value="comunicazione-linguaggio"> Comunicazione e linguaggio</label>
+              <label><input type="checkbox" name="categorie" value="strategie-colloquio"> Strategie di colloquio</label>
+              <label><input type="checkbox" name="categorie" value="presentazione-professionale"> Presentazione professionale</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary">Completa iscrizione studente</button>
+          <p id="student-register-message" class="form-message" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <!-- DOCENTE -->
+    <section>
+      <h2 class="section-title">Iscrizione docenti / professionisti</h2>
+      <p class="section-subtitle">
+        Registrati per caricare lezioni e visualizzare le richieste degli studenti.
+      </p>
+
+      <form id="teacher-register-form" class="lesson-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="doc-nome">Nome</label>
+            <input type="text" id="doc-nome" name="nome" placeholder="Es. Dott. Rossi">
+          </div>
+          <div class="form-field">
+            <label for="doc-email">E-mail *</label>
+            <input type="email" id="doc-email" name="email" required placeholder="nome@example.com">
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary">Completa iscrizione docente</button>
+          <p id="teacher-register-message" class="form-message" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 SpeakSmart – Accesso piattaforma.
+  </footer>
+</div>
+
+<script src="accesso.js"></script>
+</body>
+</html>

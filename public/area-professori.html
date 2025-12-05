@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Area professori – SpeakSmart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="logo">
+      Speak<span>Smart</span> · Area professori
+    </div>
+    <div class="header-cta">
+      <a href="/" class="btn btn-outline">Torna al sito</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="section-title">Benvenuto nell’area professori</h2>
+      <p class="section-subtitle" id="prof-welcome">
+        Caricamento…
+      </p>
+    </section>
+
+    <!-- FILTRO CATEGORIA -->
+    <section>
+      <h2 class="section-title">Richieste degli studenti</h2>
+      <p class="section-subtitle">
+        Filtra le richieste per categoria per capire su cosa hanno più bisogno di aiuto.
+      </p>
+
+      <div class="filter-bar">
+        <span>Categoria:</span>
+        <select id="prof-req-categoria">
+          <option value="">Tutte le categorie</option>
+          <option value="nessuna-conoscenza">Nessuna conoscenza pregressa</option>
+          <option value="problemi-ansia">Problemi di ansia</option>
+          <option value="conoscenza-di-se">Conoscenza di sé</option>
+          <option value="comunicazione-linguaggio">Comunicazione e linguaggio</option>
+          <option value="strategie-colloquio">Strategie di colloquio</option>
+          <option value="presentazione-professionale">Presentazione professionale</option>
+        </select>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="richieste-table">
+          <thead>
+          <tr>
+            <th>Data</th>
+            <th>Studente</th>
+            <th>Categoria</th>
+            <th>Messaggio</th>
+            <th>Contatto</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr><td colspan="5">Caricamento richieste…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- LEZIONI -->
+    <section>
+      <h2 class="section-title">Lezioni caricate</h2>
+      <p class="section-subtitle">
+        Qui vedi tutte le lezioni presenti in piattaforma e puoi filtrare per categoria.
+      </p>
+
+      <div class="filter-bar">
+        <span>Categoria:</span>
+        <select id="prof-lez-categoria">
+          <option value="">Tutte le categorie</option>
+          <option value="nessuna-conoscenza">Nessuna conoscenza pregressa</option>
+          <option value="problemi-ansia">Problemi di ansia</option>
+          <option value="conoscenza-di-se">Conoscenza di sé</option>
+          <option value="comunicazione-linguaggio">Comunicazione e linguaggio</option>
+          <option value="strategie-colloquio">Strategie di colloquio</option>
+          <option value="presentazione-professionale">Presentazione professionale</option>
+        </select>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="lezioni-table">
+          <thead>
+          <tr>
+            <th>Data</th>
+            <th>Titolo</th>
+            <th>Categoria</th>
+            <th>Descrizione</th>
+            <th>Link</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr><td colspan="5">Caricamento lezioni…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CARICA NUOVA LEZIONE -->
+    <section>
+      <h2 class="section-title">Carica una nuova lezione</h2>
+      <p class="section-subtitle">
+        Collega ogni lezione a una categoria, così gli studenti la trovano tramite il loro filtro.
+      </p>
+
+      <form id="lesson-form" class="lesson-form">
+        <div class="form-grid">
+          <div class="form-field form-row-full">
+            <label for="lesson-titolo">Titolo della lezione *</label>
+            <input type="text" id="lesson-titolo" name="titolo" required>
+          </div>
+          <div class="form-field form-row-full">
+            <label for="lesson-categoria">Categoria *</label>
+            <select id="lesson-categoria" name="categoria" required>
+              <option value="">Seleziona una categoria</option>
+              <option value="nessuna-conoscenza">Nessuna conoscenza pregressa</option>
+              <option value="problemi-ansia">Problemi di ansia</option>
+              <option value="conoscenza-di-se">Conoscenza di sé</option>
+              <option value="comunicazione-linguaggio">Comunicazione e linguaggio</option>
+              <option value="strategie-colloquio">Strategie di colloquio</option>
+              <option value="presentazione-professionale">Presentazione professionale</option>
+            </select>
+          </div>
+          <div class="form-field form-row-full">
+            <label for="lesson-descrizione">Descrizione</label>
+            <textarea id="lesson-descrizione" name="descrizione"></textarea>
+          </div>
+          <div class="form-field form-row-full">
+            <label for="lesson-link">Link (facoltativo)</label>
+            <input type="url" id="lesson-link" name="link" placeholder="https://…">
+          </div>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary">Carica lezione</button>
+          <p id="lesson-message" class="form-message" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 SpeakSmart – Area professori.
+  </footer>
+</div>
+
+<script src="professori.js"></script>
+</body>
+</html>

@@ -11,19 +11,28 @@ const PORT = process.env.PORT || 3000;
 // ---------------------
 const connectionString = process.env.DATABASE_URL;
 if (!connectionString) {
-  console.error("ERRORE: DATABASE_URL non è configurata.");
-  process.exit(1);
+  console.warn("ATTENZIONE: DATABASE_URL non è configurata. Avvio in locale senza database.");
 }
 
-const pool = new Pool({
-  connectionString,
-  ssl: process.env.PGSSL === "disable" ? false : { rejectUnauthorized: false }
-});
+let pool = null;
+
+if (connectionString) {
+  pool = new Pool({
+    connectionString,
+    // altre opzioni eventuali...
+  });
+}
 
 // ---------------------
 // CREAZIONE TABELLE
 // ---------------------
 async function ensureTables() {
+  // In locale, senza DATABASE_URL, saltiamo la creazione delle tabelle
+  if (!pool) {
+    console.warn("Database non disponibile: salto la creazione delle tabelle in locale.");
+    return;
+  }
+
   const createIscrizioni = `
     CREATE TABLE IF NOT EXISTS iscrizioni (
       id SERIAL PRIMARY KEY,
@@ -81,7 +90,10 @@ async function ensureTables() {
     console.error("Errore nella creazione delle tabelle:", err);
   }
 }
-ensureTables();
+
+ensureTables().catch((err) => {
+  console.error("Errore in ensureTables:", err);
+});
 
 // ---------------------
 // MIDDLEWARE
@@ -93,6 +105,13 @@ app.use(express.static(path.join(__dirname, "public")));
 // API ISCRIZIONE CORSO
 // ---------------------
 app.post("/api/iscrizioni", async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({
+      success: false,
+      error: "Database non disponibile in ambiente locale."
+    });
+  }
+
   const { nome, email, telefono, eta, edizione, obiettivi, esperienza } =
     req.body || {};
 
@@ -135,6 +154,13 @@ app.post("/api/iscrizioni", async (req, res) => {
 // API REGISTRAZIONE STUDENTE/DOCENTE
 // ---------------------
 app.post("/api/registrazione-studente", async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({
+      success: false,
+      error: "Database non disponibile in ambiente locale."
+    });
+  }
+
   const { nome, email, categorie } = req.body || {};
   if (!email || !Array.isArray(categorie) || categorie.length === 0) {
     return res.status(400).json({
@@ -170,6 +196,13 @@ app.post("/api/registrazione-studente", async (req, res) => {
 });
 
 app.post("/api/registrazione-docente", async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({
+      success: false,
+      error: "Database non disponibile in ambiente locale."
+    });
+  }
+
   const { nome, email } = req.body || {};
   if (!email) {
     return res.status(400).json({
@@ -206,6 +239,13 @@ app.post("/api/registrazione-docente", async (req, res) => {
 // API LEZIONI
 // ---------------------
 app.post("/api/lezioni", async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({
+      success: false,
+      error: "Database non disponibile in ambiente locale."
+    });
+  }
+
   const { titolo, descrizione, link, categoria } = req.body || {};
 
   if (!titolo || !categoria) {
@@ -240,6 +280,13 @@ app.post("/api/lezioni", async (req, res) => {
 });
 
 app.get("/api/lezioni", async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({
+      success: false,
+      error: "Database non disponibile in ambiente locale."
+    });
+  }
+
   const categoria = req.query.categoria || null;
 
   let text = `
@@ -271,6 +318,13 @@ app.get("/api/lezioni", async (req, res) => {
 // API RICHIESTE STUDENTI
 // ---------------------
 app.post("/api/richieste", async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({
+      success: false,
+      error: "Database non disponibile in ambiente locale."
+    });
+  }
+
   const { nome, email, categoria, messaggio } = req.body || {};
 
   if (!categoria || !messaggio) {
@@ -305,6 +359,13 @@ app.post("/api/richieste", async (req, res) => {
 });
 
 app.get("/api/richieste", async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({
+      success: false,
+      error: "Database non disponibile in ambiente locale."
+    });
+  }
+
   const categoria = req.query.categoria || null;
 
   let text = `
